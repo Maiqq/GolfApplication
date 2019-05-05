@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Första applicationen</string>
+    <string name="button_txt">Tryck på mig!</string>
+    <string name="button_clicked_txt">Knappen tryckt!</string>
+    <string name="portrait_txt">Stående format</string>
+    <string name="landscape_txt">Liggande format</string>
+</resources>
