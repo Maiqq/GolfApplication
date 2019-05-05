@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BuildUIWithLayoutEditor</string>
+    <string name="LeftTop_txt">LeftTop</string>
+    <string name="RightTop_txt">RightTop</string>
+    <string name="LeftBottom_txt">LeftBottom</string>
+    <string name="RightBottom_txt">RightBottom</string>
+</resources>
