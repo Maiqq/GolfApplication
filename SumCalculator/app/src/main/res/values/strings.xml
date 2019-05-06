@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SumCalculator</string>
+    <string name="desciption">Preschool calculator! This app will help you check your addition answers!</string>
+    <string name="number1" >Enter a number</string>
+    <string name="number2" >Enter another number</string>
+    <string name="result" >Result</string>
+    <string name="button_txt">Show sum!"</string>
+
+</resources>
