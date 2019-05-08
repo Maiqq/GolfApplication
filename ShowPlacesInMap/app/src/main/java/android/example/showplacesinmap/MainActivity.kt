@@ -1,4 +1,7 @@
-package android.example.employeesapp
+
+
+
+package android.example.showplacesinmap
 
 
 import android.os.Bundle
@@ -22,15 +25,16 @@ class MainActivity : AppCompatActivity() {
         // Instantiate the RequestQueue
         val queue = Volley.newRequestQueue(this)
         // URL to JSON data - remember use your own data here
-        val url = "https://cc50566e-af91-4de5-86c8-4d66e95b7f17.mock.pstmn.io/employees.json"
+        val url = "https://e947c3bf-8f97-4f7c-8f91-ded1c5b6d230.mock.pstmn.io/places.json"
         // Create request and listeners
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
             Response.Listener { response ->
                 // Get employees from JSON
-                val employees = response.getJSONArray("employees")
+                val places = response.getJSONArray("places")
                 // Create Employees Adapter with employees data
-                recyclerView.adapter = EmployeesAdapter(employees)
+                recyclerView.adapter = PlacesAdapter(places)
+
             },
             Response.ErrorListener { error ->
                 Log.d("JSON",error.toString())

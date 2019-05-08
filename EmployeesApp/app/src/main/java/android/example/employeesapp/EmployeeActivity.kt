@@ -43,9 +43,8 @@ class EmployeeActivity : AppCompatActivity() {
                 text = phone
             }
 
-            val deparmentTextView = findViewById<TextView>(R.id.departmentTextView).apply {
-                text = department
-            }
+            departmentTextView.text = department
+          
 
             val imageView = findViewById<ImageView>(R.id.imageView).apply{
                 Glide.with(imageView.context).load(employee["image"]).into(imageView)
