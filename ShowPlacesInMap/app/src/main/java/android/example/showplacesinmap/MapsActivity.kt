@@ -2,6 +2,11 @@ package android.example.showplacesinmap
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -9,6 +14,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -38,20 +44,39 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // get data from intent
-        val bundle: Bundle? = intent.extras;
-        if (bundle != null) {
-            val placeString = bundle!!.getString("place")
-            val place = JSONObject(placeString)
-            val name = place["street_name"].toString()
-            val lat = place["longitude"].toString().toDouble()
-            val lng = place["latitude"].toString().toDouble()
+        // Instantiate the RequestQueue
+        val queue = Volley.newRequestQueue(this)
+        // URL to JSON data - remember use your own data here
+        val url = "https://e947c3bf-8f97-4f7c-8f91-ded1c5b6d230.mock.pstmn.io/places.json"
+        // Create request and listeners
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            Response.Listener { response ->
+                // Get employees from JSON
+                val places = response.getJSONArray("places")
+                for (place in 0..(places.length()-1)) {
+                    val item = places.getJSONObject(place)
+                    val name = item["street_name"].toString()
+                    val lat = item["latitude"].toString().toDouble()
+                    val lng = item["longitude"].toString().toDouble()
+
+                    val placeOnMap = LatLng(lat, lng)
+                    mMap.addMarker(MarkerOptions().position(placeOnMap).title(name))
 
 
-            // Add a marker in Sydney and move the camera
-            val placeOnMap = LatLng(lat, lng)
-            mMap.addMarker(MarkerOptions().position(placeOnMap).title(name))
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(placeOnMap))
+
+
+                }
+
+            },
+            Response.ErrorListener { error ->
+                Log.d("JSON",error.toString())
+            }
+        )
+        // Add the request to the RequestQueue.
+        queue.add(jsonObjectRequest)
+
+
         }
     }
-}
+
