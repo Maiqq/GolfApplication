@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ShowGolfCoursesInMap</string>
+    <string name="content_description">Content description</string>
+    <string name="ShowPlaceOnMap">Press button to display all courses on a map</string>
+    <string name="PressMe">Show courses!</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
