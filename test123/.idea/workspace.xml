@@ -2,53 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e993555f-b6c8-4cd0-8bd2-854526ebac9b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/.idea/render.experimental.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/androidTest/java/android/example/roomshoppinglist/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/java/android/example/roomshoppinglist/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/drawable/ic_add_white_24dp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/layout/content_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/layout/dialog_ask_new_shopping_list_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/layout/recyclerview_item.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/menu/menu_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/app/src/test/java/android/example/roomshoppinglist/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../RoomShoppingList/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/androidTest/java/android/example/roomwordsample/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/java/android/example/roomwordsample/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/layout/content_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/menu/menu_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/app/src/test/java/android/example/roomwordsample/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RoomWordSample/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,8 +72,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2552" />
-    <option name="y" value="343" />
+    <option name="x" value="-7" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -182,8 +178,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2552" y="343" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="1936" height="1056" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.32995737" />
       <window_info id="Structure" side_tool="true" />
