@@ -8,8 +8,6 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.activity_detail.item_detail_container
 import kotlinx.android.synthetic.main.item_list.*
 import org.json.JSONArray
 
