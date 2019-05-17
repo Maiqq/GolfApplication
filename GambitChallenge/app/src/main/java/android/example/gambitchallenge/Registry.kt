@@ -17,19 +17,19 @@ public class Registry {
             this.integer = i
 
 
-        if ((((((number > 0) && (number < 9))) || (((((number > 10) && (number < 13))) || (((((number > 14) && (number < 17))) || (((((number > 19) && (number < 21))) || (((((number > 22) && (number < 25))) || (((((number > 26) && (number < 29))) || (((((number > 30) && (number < 49))) || (((((number > 76) && (number < 91))) || (((number > 96) && (number < 101))))))))))))))))))))
+        if ((((((integer > 0) && (integer < 9))) || (((((integer > 10) && (integer < 13))) || (((((integer > 14) && (integer < 17))) || (((((integer > 18) && (integer < 21))) || (((((integer > 22) && (integer < 25))) || (((((integer > 26) && (integer < 29))) || (((((integer > 30) && (integer < 49))) || (((((integer > 76) && (integer < 91))) || (((integer > 96) && (integer < 101))))))))))))))))))))
         {
             this.type = RegistryTypes.Real4
         }
-        else if ((((number > 48) && (number < 57))))
+        else if ((((integer > 48) && (integer < 57))))
         {
             this.type = RegistryTypes.BCD
         }
-        else if ((((((number > 58) && (number < 63))) || (((number > 91) && (number < 97))))))
+        else if ((((((integer > 58) && (integer < 63))) || (((integer > 91) && (integer < 97))))))
         {
             this.type = RegistryTypes.Integer
         }
-        else if ((number == 72))
+        else if ((integer == 72))
         {
            this.type = RegistryTypes.Bit
         }

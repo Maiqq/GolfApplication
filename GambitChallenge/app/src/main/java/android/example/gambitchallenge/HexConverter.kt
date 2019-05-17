@@ -7,22 +7,29 @@ public class HexConverter{
     public fun DecimalToHex(DecimalNumber:String):String{
         val number: Int = DecimalNumber.toInt()
         val hex_value:String = Integer.toHexString(number)
-        return hex_value
+        return hex_value.toUpperCase()
 
     }
 
     public fun HexToDecimal(hexnumber:String):Long{
 
-            val error:Long = 0
-            if(hexnumber == ""){
-                return error}
-            else
-            {
-                val decimal_value:Long = java.lang.Long.parseLong(hexnumber, 16)
-                return decimal_value
-            }
+        val error:Long = 0
+        if(hexnumber == ""){
+            return error}
+        else
+        {
+            var decimal_value:Long = java.lang.Long.parseLong(hexnumber, 16)
 
-        }
+            if(decimal_value > 2147483647.5)
+            {
+                decimal_value= decimal_value-4294967296
+            }
+            else decimal_value=decimal_value
+
+            return decimal_value
+
+
+        }}
 
     public fun FloatConverter(HexNumber:String):Float{
 

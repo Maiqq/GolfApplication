@@ -1,19 +1,32 @@
 package android.example.gambitchallenge
+
+import android.example.gambitchallenge.MainActivity.Companion.meter_values
+
+
 import android.example.gambitchallenge.RegistryTypes
 import android.example.gambitchallenge.RegistryText
+import android.util.Log
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 
 import org.json.JSONArray
 import org.json.JSONObject
 
-public class Parser(meter_values:JSONArray, manual_values:JSONArray) {
+public class Parser(meter:JSONArray, manual:JSONArray) {
 
-    var meter_values: JSONArray = meter_values
-    var manual_values: JSONArray = manual_values
+    var metervalues: JSONArray = meter
+    var manualvalues: JSONArray = manual
+
+
     var helper: HexConverter = HexConverter()
     var parsedList: MutableList<String> = mutableListOf<String>()
 
-    public fun CreateList(): MutableList<String> {
-        val l: Int = meter_values.length()
+
+
+    public fun createList(): MutableList<String> {
+        val l: Int = manualvalues.length()
         var count: Int = 0
         var string: String = ""
         var float: Float = 0f
@@ -21,62 +34,152 @@ public class Parser(meter_values:JSONArray, manual_values:JSONArray) {
         var int: Int = 0
         var string2: String = ""
         var byte: Byte = 1
+        var listcounter:Int=0
+        var string3: String= ""
+        var index:Int=0
+        var value1:String
+        var value2:String
+        var value3:String
 
-        while (count < l) {
+        while (listcounter < l) {
             string = ""
             float = 0f
             int = 0
             string2 = ""
             byte = 1
-            var meter: JSONObject = meter_values.getJSONObject(count)
-            var manual: JSONObject = manual_values.getJSONObject(count)
-            var registry: Registry = Registry(meter["id"].toString().toInt(), meter["value"].toString().toInt())
+            long = 0
+            string3 = ""
+             value1 = ""
+            value2 = ""
+            value3 = ""
+
+            var manual: JSONObject = manualvalues.getJSONObject(listcounter)
+
             var text: RegistryText = RegistryText(
-                manual["regisers"].toString(),
+                manual["registers"].toString(),
                 manual["text"].toString(),
                 manual["amount"].toString().toInt()
+
             )
+            var meter: JSONObject = meter_values.getJSONObject(text.register.substringBefore("-").toInt()-1)
+            var registry = Registry(meter["id"].toString().toInt(), text.register.substringBefore("-").toInt())
+
             val q: Int = registry.number
 
             if (text.number > 1) {
                 var p: Int = text.number - 1
+                index = text.register.substringBefore("-").toInt() + p -1
 
-                for (x in 0 until p) {
-                    meter = meter_values.getJSONObject(count + p)
+                if (index > 98){
+                    index = meter_values.length()-1
+                    for (x in 0..p){
+                        meter = meter_values.getJSONObject(index-x)
+                        registry.number = meter["value"].toString().toInt()
+                        if (x==0)
+                        {value1 = registry.number.toString()}
+                        else if(x==1)
+                        {value2 = registry.number.toString()}
+                        else
+                        {value3 = registry.number.toString()}
+                        var hex: String = helper.DecimalToHex(registry.number.toString())
+                        string += hex
+
+                    }
+                }
+                else {
+                    for (x in 0..p) {
+                        index = text.register.substringBefore("-").toInt() + p -1
+                        meter = meter_values.getJSONObject(index)
+
+
                     registry.number = meter["value"].toString().toInt()
+                        if (x==0)
+                        {value1 = registry.number.toString()}
+                        else if(x==1)
+                        {value2 = registry.number.toString()}
+                        else
+                        {value3 = registry.number.toString()}
                     p--
                     var hex: String = helper.DecimalToHex(registry.number.toString())
-                    string += hex
+                    string += hex}
                 }
                 if (registry.type == RegistryTypes.Real4) {
                     float = helper.FloatConverter(string)
-                    parsedList.add(count, text.text + ": " + float.toString())
+                    parsedList.add(listcounter,  "Registers: " + text.register+ " , " + text.text + ": " + float.toString() + ",. Unparsed values: "+ string+ " , "+ value1  + ", " + value2 + " , "+ value3 + " , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
+
                 } else if (registry.type == RegistryTypes.Long) {
                     long = helper.HexToDecimal(string)
-                    parsedList.add(count, text.text + ": " + long.toString())
+                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + long.toString()+ ",. Unparsed values: "+ string + " , "+ value1  + ", " + value2 + " , "+ value3 + " , " + " , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
+
                 } else if (registry.type == RegistryTypes.Integer) {
                     string2 = helper.StringCutterFromRight(string, 2)
                     long = helper.HexToDecimal(string2)
-                    parsedList.add(count, text.text + ": " + long.toString())
+                    parsedList.add(listcounter,  "Registers: " + text.register+ " , " +text.text + ": " + long.toString()+ ",. Unparsed values: "+ string2 + " , "+ value1  + ", " + value2 + " , "+ value3 + " , " + " , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
 
                 } else if (registry.type == RegistryTypes.BCD) {
-                    string2 = helper.toBCD(string.toInt())
-                    parsedList.add(count, text.text + ": " + string2)
+                    if (string.toLong() > 2147483647)
+                    {
+                        for(x in 0 until string.length step 2)
+                        {
+                            string3 = string.substring(x, x+2)
+                            string2 += helper.toBCD(string3.toInt())
+                        }
+                    }
+                    else{
+
+                    string2 = helper.toBCD(string.toInt())}
+                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + string2+ ",. Unparsed values: "+ string2 + " , " + value1  + ", " + value2 + " , "+ value3 + " , " +" , "+ registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
 
                 } else {
                     string2 = helper.hexToBin(string)
-                    parsedList.add(count, text.text + ": " + string2)
+                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + string2+ ",. Unparsed values: "+ string2 + " , "+ value1  + ", " + value2 + " , "+ value3 + " , " +" , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
                 }
 
 
-            } else {
+            } else if (text.number == 1)
+            {
+                meter = meter_values.getJSONObject(text.register.toInt() -2)
+                registry.number = meter["value"].toString().toInt()
 
+                    var hex = helper.DecimalToHex(registry.number.toString())
+                    string = hex
+                if (registry.type == RegistryTypes.Real4) {
+                    float = helper.FloatConverter(string)
+                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + float.toString()+ ",. Unparsed values: "+ string + " , " + registry.number.toString() + " , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
+                } else if (registry.type == RegistryTypes.Long) {
+                    long = helper.HexToDecimal(string)
+                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + long.toString()+ ",. Unparsed values: "+ string + " , "+ registry.number.toString() + " , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
+                } else if (registry.type == RegistryTypes.Integer)
+                {   if (string.length > 2){
+                    string2 = helper.StringCutterFromRight(string, 2)
+                    long = helper.HexToDecimal(string2)}
+                    else long = helper.HexToDecimal(string)
+                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + long.toString()+ ",. Unparsed values: "+ string2 + " , "+ registry.number.toString() + " , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
+
+                } else if (registry.type == RegistryTypes.BCD) {
+                    string2 = helper.toBCD(string.toInt())
+                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + string2+ ",. Unparsed values: "+ string2 + " , "+ registry.number.toString() + " , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
+
+                } else {
+                    string2 = helper.hexToBin(string)
+                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + string2+ ",. Unparsed values: "+ string2 + " , "+ registry.number.toString() + " , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
+                }
 
             }
-            count++
+            else parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + ",. Unparsed values: "+ string + " , " + registry.number.toString() + " , " + registry.integer.toString()+ " , " + registry.type.toString()+ " , " + text.register+ " , " + text.number.toString())
+
+            if (text.number -1  > 0)
+
+            {count += text.number}
+
+            else {
+                count++
+            }
+            listcounter++
 
 
         }
+        parsedList.count()
         return parsedList
     }
 }
