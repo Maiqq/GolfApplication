@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             var Parser = Parser(meter_values, manual_values)
             Parser.createList()
             recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = ValueAdapter(Parser.parsedList)
+            recyclerView.adapter = ValueAdapter(Parser.parsedvalues)
 
         }
 
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
                 Log.d("PTM", list.toString())
                 recyclerView.layoutManager = LinearLayoutManager(this)
-                recyclerView.adapter = ValueAdapter(Parser.parsedList)
+                recyclerView.adapter = ValueAdapter(Parser.parsedvalues)
 
 
 

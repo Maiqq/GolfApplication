@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GambitChallenge</string>
+    <string name="general">This parser works as following. It reads in two arrays, one containing registry values and the other manual values for registers.
+    It starts by checking the manual array for information on how to handle incoming registers. Such information is for a example amount of registers to combine into one value as well as the output format. Once it got the information it starts by converting the registry input into a hex string and adds another string if needed according to the manual  of how many registers to combine.</string>
 </resources>
