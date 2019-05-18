@@ -2,4 +2,14 @@
     <string name="app_name">GambitChallenge</string>
     <string name="general">This parser works as following. It reads in two arrays, one containing registry values and the other manual values for registers.
     It starts by checking the manual array for information on how to handle incoming registers. Such information is for a example amount of registers to combine into one value as well as the output format. Once it got the information it starts by converting the registry input into a hex string and adds another string if needed according to the manual  of how many registers to combine.</string>
+    <string name="unparsed">Unparsed values below:</string>
+    <string name="typeReal4">When the type is real4, it means that the output value is supposed to be a float value. Image above shows the function used converting the hexadecimal value to float.</string>
+    <string name="typeLong">When the type is long, it means the output value is supposed to be a long value. Image above shows the function used converting the hexadecimal value to long.</string>
+    <string name="typeInteger">When the type is integer, it means the output value is supposed to be an integer value. Image above shows the function used converting the hexadecimal value to integer. </string>
+    <string name="typeBCD">When the type is BCD, it means the output value is supposed to be a BCD value. Image above shows the function used converting the hexadecimal value to a BCD value.</string>
+    <string name="typeBit">When the type is Bit, it means the output value is supposed to be a bit value. Image above shows the function used converting the hexadecimal value to a bit value.</string>
+    <string name="startinfo">This app parses Modbus data. Press on an item in the list for more information about it.</string>
+    <string name="meterWeb">Link to meter values here at  <a href="https://82e472de-ec98-488d-a246-ad79c67e85df.mock.pstmn.io/meter_values.json">Postman</a></string>
+    <string name="manualWeb">Link to manual values here at <a href="https://8f90af5c-01a1-41d5-8a29-006e1f57e7bb.mock.pstmn.io/manual.json">Postman</a></string>
 </resources>
+

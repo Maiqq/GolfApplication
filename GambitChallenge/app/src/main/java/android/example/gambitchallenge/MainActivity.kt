@@ -32,17 +32,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (meter_values.length() == 0 && manual_values.length() == 0) {
+      loadManualJsonData()
+        if (manual_values.length()==0)
+        {
             loadManualJsonData()
             loadMeterJsonData()
-            var Parser = Parser(meter_values, manual_values)
-
-        } else {
-            var Parser = Parser(meter_values, manual_values)
-            Parser.createList()
-            recyclerView.layoutManager = LinearLayoutManager(this)
-            recyclerView.adapter = ValueAdapter(Parser.parsedvalues)
-
+        }
+        else {
+            loadMeterJsonData()
         }
 
     }

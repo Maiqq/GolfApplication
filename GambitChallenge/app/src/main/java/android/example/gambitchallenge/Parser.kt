@@ -21,20 +21,18 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
 
 
     var helper: HexConverter = HexConverter()
-    var parsedList: MutableList<String> = mutableListOf<String>()
     var parsedvalues:MutableList<ParsedItem> = mutableListOf<ParsedItem>()
 
 
 
     public fun createList(): MutableList<ParsedItem>  {
         val l: Int = manualvalues.length()
-        var count: Int = 0
+
         var string: String = ""
         var float: Float = 0f
         var long: Long = 0
-        var int: Int = 0
         var string2: String = ""
-        var byte: Byte = 1
+
         var listcounter:Int=0
         var string3: String= ""
         var index:Int=0
@@ -45,9 +43,7 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
         while (listcounter < l) {
             string = ""
             float = 0f
-            int = 0
             string2 = ""
-            byte = 1
             long = 0
             string3 = ""
              value1 = ""
@@ -56,7 +52,7 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
 
             var manual: JSONObject = manualvalues.getJSONObject(listcounter)
 
-            var text: RegistryText = RegistryText(
+            var text= RegistryText(
                 manual["registers"].toString(),
                 manual["text"].toString(),
                 manual["amount"].toString().toInt()
@@ -65,7 +61,6 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
             var meter: JSONObject = meter_values.getJSONObject(text.register.substringBefore("-").toInt()-1)
             var registry = Registry(meter["id"].toString().toInt(), text.register.substringBefore("-").toInt())
 
-            val q: Int = registry.number
 
             if (text.number > 1) {
                 var p: Int = text.number - 1
@@ -106,24 +101,25 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
                 }
                 if (registry.type == RegistryTypes.Real4) {
                     float = helper.FloatConverter(string)
-                    parsedList.add(listcounter,  "Registers: " + text.register+ " , " + text.text + ": " + float.toString() + "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
+
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + float.toString(), "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
                     parsedvalues.add(listcounter, item)
 
                 } else if (registry.type == RegistryTypes.Long) {
                     long = helper.HexToDecimal(string)
-                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + long.toString()+ "Hex: "+ string + " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
+
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + long.toString(), "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: "+ registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
                     parsedvalues.add(listcounter, item)
 
 
                 } else if (registry.type == RegistryTypes.Integer) {
+                    if (registry.integer == 92){
                     string2 = helper.StringCutterFromRight(string, 2)
-                    long = helper.HexToDecimal(string2)
-                    parsedList.add(listcounter,  "Registers: " + text.register+ " , " +text.text + ": " + long.toString()+ "Hex: "+ string2 + " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
-
+                    long = helper.HexToDecimal(string2)}
+                    else
+                    {long = helper.HexToDecimal(string2)}
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + long.toString(), "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: "+ registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
                     parsedvalues.add(listcounter, item)
@@ -140,7 +136,6 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
                     else{
 
                     string2 = helper.toBCD(string.toInt())}
-                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + string2+ "Hex: "+ string2 + " , value1: " + value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: "+ registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
 
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + string2, "Hex: "+ string+ " , value1: "+ value1  + ", value2: "+ value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
@@ -148,14 +143,12 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
 
                 } else {
                     string2 = helper.hexToBin(string)
-                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + string2+ "Hex: "+ string2 + " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
 
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + string2, "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
                     parsedvalues.add(listcounter, item)
 
                 }
-
 
             } else if (text.number == 1)
             {
@@ -166,7 +159,6 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
                     string = hex
                 if (registry.type == RegistryTypes.Real4) {
                     float = helper.FloatConverter(string)
-                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + float.toString()+ "Hex: "+ string + " , value1: " + registry.number.toString() + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
 
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + float.toString(), "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
@@ -175,8 +167,6 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
 
                 } else if (registry.type == RegistryTypes.Long) {
                     long = helper.HexToDecimal(string)
-                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + long.toString()+ "Hex: "+ string + " , "+ registry.number.toString() + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
-
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + long.toString(), "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
                     parsedvalues.add(listcounter, item)
@@ -186,8 +176,6 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
                     string2 = helper.StringCutterFromRight(string, 2)
                     long = helper.HexToDecimal(string2)}
                     else long = helper.HexToDecimal(string)
-                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + long.toString()+ "Hex: "+ string2 + " , "+ registry.number.toString() + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
-
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + long.toString(), "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
                     parsedvalues.add(listcounter, item)
@@ -195,7 +183,7 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
 
                 } else if (registry.type == RegistryTypes.BCD) {
                     string2 = helper.toBCD(string.toInt())
-                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + string2+ "Hex: "+ string2 + " , "+ registry.number.toString() + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
+
 
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + string2, "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
@@ -203,7 +191,7 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
 
                 } else {
                     string2 = helper.hexToBin(string)
-                    parsedList.add(listcounter, "Registers: " + text.register+ " , " +text.text + ": " + string2+ "Hex: "+ string2 + " , "+ registry.number.toString() + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
+
 
                     var item = ParsedItem("Registers: " + text.register,  text.text + ": " + string2, "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
                     parsedvalues.add(listcounter, item)
@@ -211,8 +199,7 @@ public class Parser(meter:JSONArray, manual:JSONArray) {
                 }
 
             }
-            else {parsedList.add(listcounter, "Registers: Error , " +text.text + ": " + "Hex: "+ string + " , " + registry.number.toString() + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString())
-
+            else {
             var item = ParsedItem("Registers: " + text.register,  text.text + ": Error", "Hex: "+ string+ " , value1: "+ value1  + ", value2: " + value2 + " , value3: "+ value3 + " , register id: " + registry.integer.toString()+ " , register type: " + registry.type.toString()+ " , manual text: " + text.register+ " , manual amount of register: " + text.number.toString(), registry.type.toString())
             parsedvalues.add(listcounter, item)}
 

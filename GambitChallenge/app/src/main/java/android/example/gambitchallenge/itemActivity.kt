@@ -2,6 +2,7 @@ package android.example.gambitchallenge
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_item.*
 import org.json.JSONObject
@@ -32,12 +33,20 @@ class itemActivity : AppCompatActivity() {
                 text = unparsed
             }
             var id = 0
-            if (type == "Real4") id = R.drawable.fun3
-            else if (type == "Long") id = R.drawable.fun2
-            else if (type == "BCD") id = R.drawable.fun5
-            else if (type == "Integer") id = R.drawable.fun2
-            else if (type == "Bit") id = R.drawable.fun6
+            if (type == "Real4") {id = R.drawable.fun3
+            desciptionTextView.text = resources.getString(R.string.typeReal4)}
+            else if (type == "Long") {id = R.drawable.fun2
+                desciptionTextView.text = resources.getString(R.string.typeLong)}
+            else if (type == "BCD"){ id = R.drawable.fun5
+                desciptionTextView.text = resources.getString(R.string.typeBCD)}
+            else if (type == "Integer"){ id = R.drawable.fun2
+                desciptionTextView.text = resources.getString(R.string.typeInteger)}
+            else if (type == "Bit"){ id = R.drawable.fun6
+                desciptionTextView.text = resources.getString(R.string.typeBit)}
             imageView.setImageResource(id)
+
+            val meterWebTextView = findViewById<TextView>(R.id.meterWebTextVIew).setMovementMethod(LinkMovementMethod.getInstance())
+            val manualWebTextView = findViewById<TextView>(R.id.manualWebTextView).setMovementMethod(LinkMovementMethod.getInstance())
         }
         }
     }
