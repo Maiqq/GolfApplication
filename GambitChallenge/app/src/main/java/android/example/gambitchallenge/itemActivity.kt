@@ -45,6 +45,7 @@ class itemActivity : AppCompatActivity() {
                 desciptionTextView.text = resources.getString(R.string.typeBit)}
             imageView.setImageResource(id)
 
+            //Set TextViews to clickable
             val meterWebTextView = findViewById<TextView>(R.id.meterWebTextVIew).setMovementMethod(LinkMovementMethod.getInstance())
             val manualWebTextView = findViewById<TextView>(R.id.manualWebTextView).setMovementMethod(LinkMovementMethod.getInstance())
         }

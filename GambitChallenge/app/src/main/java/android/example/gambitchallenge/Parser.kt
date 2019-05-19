@@ -3,14 +3,6 @@ package android.example.gambitchallenge
 import android.example.gambitchallenge.MainActivity.Companion.meter_values
 
 
-import android.example.gambitchallenge.RegistryTypes
-import android.example.gambitchallenge.RegistryText
-import android.util.Log
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-
 import org.json.JSONArray
 import org.json.JSONObject
 

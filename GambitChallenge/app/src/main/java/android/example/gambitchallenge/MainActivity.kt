@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    // employees static object - can be used as MainActivity.employees
+
     companion object {
         var meter_values:JSONArray = JSONArray()
         var manual_values:JSONArray = JSONArray()
@@ -55,13 +55,12 @@ class MainActivity : AppCompatActivity() {
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
             Response.Listener { response ->
-                // store loaded json to static employees
+
                 meter_values = response.getJSONArray("meter_values")
 
-                // open Logcat and you will see both lists
                 Log.d("PTM", meter_values.toString())
                 Log.d("PTM", manual_values.toString())
-                // uncomment below lines to use your parser, now it gives some errors...
+
                 var Parser = Parser(meter_values, manual_values)
                var list = Parser.createList()
 
@@ -69,10 +68,6 @@ class MainActivity : AppCompatActivity() {
                 recyclerView.layoutManager = LinearLayoutManager(this)
                 recyclerView.adapter = ValueAdapter(Parser.parsedvalues)
 
-
-
-                // setup recycler view
-                //setupRecyclerView(employees)
 
             },
             Response.ErrorListener { error ->
@@ -93,10 +88,8 @@ class MainActivity : AppCompatActivity() {
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
             Response.Listener { response ->
-                // store loaded json to static employees
                 manual_values = response.getJSONArray("manual_text")
-                // setup recycler view
-                //setupRecyclerView(employees)
+
             },
             Response.ErrorListener { error ->
                 Log.d("JSON",error.toString())

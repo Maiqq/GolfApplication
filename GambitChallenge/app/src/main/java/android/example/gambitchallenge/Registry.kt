@@ -1,6 +1,6 @@
 package android.example.gambitchallenge
 
-import android.example.gambitchallenge.RegistryTypes
+
 
 
 public class Registry {
