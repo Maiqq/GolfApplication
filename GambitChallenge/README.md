@@ -10,7 +10,7 @@ If an item in the recyclerview is clicked it will open a new activity containing
 
 In the ScreenShot folder of the project you can find both pictures and a video of the app running as well as pictures of some code.
 
-The Parser class is actually pretty much the same as my last years contribution to this challenge. However that was written in c# in this is in Kotlin. I also made some changes to the code for certain manual values which where incorrect.
+The Parser class is actually pretty much the same as my last years contribution to this challenge. However that was written in c# in this is in Kotlin. I also made some changes to the code for certain manual values which were incorrect.
 As i don't have the correct parsed values cheatsheet i can't be 100% sure all values are correct but at least the ones from the instructions are on point.
 
 It was fun to tackle this challenge again this year with a little more tools in my aresenal.
