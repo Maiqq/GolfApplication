@@ -7,6 +7,7 @@ After arrays are read they go into the parser class which loops through the manu
 Once parsing is complete it returns a list of the ParsedItem class containing parsed values.
 This list is passed on to a recyclerview adapter that binds the items to the recyclerview.
 If an item in the recyclerview is clicked it will open a new activity containing more information about the selected value. Here you will find information on how I've converted the registry values.
+If you are satisfied with the parsed values you can press on the post button and app will using volley do a post request with the parsed list containing just the values seen in the recyclerview.
 
 In the ScreenShot folder of the project you can find both pictures and a video of the app running as well as pictures of some code.
 

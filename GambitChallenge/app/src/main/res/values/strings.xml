@@ -11,5 +11,6 @@
     <string name="startinfo">This app parses Modbus data. Press on an item in the list for more information about it.</string>
     <string name="meterWeb">Link to meter values here at  <a href="https://82e472de-ec98-488d-a246-ad79c67e85df.mock.pstmn.io/meter_values.json">Postman</a></string>
     <string name="manualWeb">Link to manual values here at <a href="https://8f90af5c-01a1-41d5-8a29-006e1f57e7bb.mock.pstmn.io/manual.json">Postman</a></string>
+    <string name="sendJson">Click to post parsed values using postman</string>
 </resources>
 
