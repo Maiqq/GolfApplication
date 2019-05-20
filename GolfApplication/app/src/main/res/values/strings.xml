@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Golf Application</string>
     <string name="action_settings">Settings</string>
+    <string name="checkHomePage">Katso kentät kotisivulla:</string>
+    <string name="showMap">Katso kentän sijainti::</string>
 
 </resources>

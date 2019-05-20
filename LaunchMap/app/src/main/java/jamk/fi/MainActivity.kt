@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         val lng = longitudeEditText.text.toString().toDouble()
 
         // Build the intent
-        val location = Uri.parse("geo:$lat,$lng")
+        val geoUriString:String = "geo:"+lat+","+lng+"?q="+lat+","+lng
+        val location = Uri.parse(geoUriString)
         val mapIntent = Intent(Intent.ACTION_VIEW, location)
 
         // Verify it resolves

@@ -1,16 +1,12 @@
 package android.example.golfapplication
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
-import android.support.v7.widget.ToolbarWidgetWrapper
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
 import android.support.design.widget.CollapsingToolbarLayout
 
 import com.android.volley.Request
@@ -31,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-            val mToolbar:Toolbar = toolbar
+            val mToolbar:Toolbar = toolbar1
             setSupportActionBar(mToolbar)
 
         if(course.length()==0) loadGolfCoursesJsonData()

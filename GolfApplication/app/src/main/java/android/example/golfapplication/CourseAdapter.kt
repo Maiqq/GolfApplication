@@ -1,6 +1,7 @@
 package android.example.golfapplication
 
 import android.content.Intent
+import android.example.golfapplication.MainActivity.Companion.course
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -46,7 +47,8 @@ class CourseAdapter (
         // department
         // image
 
-        Glide.with(holder.imageView.context).load("http://ptm.fi/materials/golfcourses/" + course["image"]).apply(RequestOptions.circleCropTransform()).into(holder.imageView)
+        Glide.with(holder.imageView.context).load("http://ptm.fi/materials/golfcourses/" + course["image"])
+            .apply(RequestOptions.circleCropTransform()).into(holder.imageView)
     }
 
     // View Holder class to hold UI views
@@ -56,5 +58,18 @@ class CourseAdapter (
         val emailTextView: TextView = view.emailTextView
         val phoneTextView: TextView = view.phoneTextView
         val imageView: ImageView = view.imageView
+
+        // add a item click listener
+        init {
+            itemView.setOnClickListener {
+                // create an explicit intent
+                val intent = Intent(view.context, CourseActivity::class.java)
+                // add selected employee json as a string data
+                intent.putExtra("course", course[adapterPosition].toString())
+                // start a new activity
+                view.context.startActivity(intent)
+            }
+
+        }
     }
 }
