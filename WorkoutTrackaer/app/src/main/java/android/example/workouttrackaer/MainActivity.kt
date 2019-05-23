@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 
 import android.support.design.widget.TabLayout
+import android.support.v4.app.FragmentActivity
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-
+import android.view.View
 
 
 class MainActivity : AppCompatActivity() {
@@ -64,4 +66,5 @@ class MainActivity : AppCompatActivity() {
         else -> super.onOptionsItemSelected(item)
         }
     }
+
 }

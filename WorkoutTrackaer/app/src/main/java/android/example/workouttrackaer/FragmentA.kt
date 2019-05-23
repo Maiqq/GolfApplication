@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import kotlinx.android.synthetic.main.fragmenta.*
 import android.support.v4.content.ContextCompat.startActivity
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -19,33 +20,37 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class FragmentA:Fragment(),View.OnClickListener {
 
-    
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
 
         val view = inflater.inflate(R.layout.fragment_main, container, false)
+        Log.d("PTM", "Testing log function")
         val btnAddWorkout = view.findViewById<Button>(R.id.btn_addWorkout)
         btnAddWorkout.setOnClickListener(this)
+
+
 
         return view
 
     }
 
     override fun onClick(v: View) {
-            when (v.id)
-            {
-                R.id.btn_addWorkout -> {
-                    buttonClicked()
-                }
+        when (v.id)
+        {
+            R.id.btn_addWorkout -> {
+                buttonClicked()
             }
-
         }
+
+    }
     private fun buttonClicked(){
+        Log.d("PTM", "Button clicked!")
         val intent = Intent(this.context, SelectExerciseActivity::class.java)
         startActivity(intent)
 
     }
 
 
-    }
+}

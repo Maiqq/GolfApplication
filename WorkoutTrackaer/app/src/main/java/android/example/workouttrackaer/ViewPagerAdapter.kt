@@ -3,6 +3,11 @@ package android.example.workouttrackaer
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.content.ContextCompat.startActivity
+import android.content.Intent
+import android.R
+import android.view.View
+
 
 class ViewPagerAdapter:FragmentPagerAdapter {
 
@@ -36,4 +41,6 @@ class ViewPagerAdapter:FragmentPagerAdapter {
         mFragmentList.add(position, fragment)
         mFragmentTitleList.add(position, title)
     }
+
+
 }
