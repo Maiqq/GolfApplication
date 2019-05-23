@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="395dp"
+            android:layout_height="643dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginTop="7dp"
+            app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:weightSum="1">
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/searchExerciseEditText" android:hint="Exercise name"
+                    android:layout_weight="0.7" android:layout_gravity="start"/>
+            <Button
+                    android:text="@string/addNewExercise"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:id="@+id/btn_addNewExercise"
+                    android:textSize="12dp"
+                    android:layout_weight="0.3" android:layout_gravity="start"/>
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/exerciseRecyclerView"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

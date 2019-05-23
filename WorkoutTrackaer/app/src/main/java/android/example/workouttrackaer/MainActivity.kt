@@ -1,5 +1,6 @@
 package android.example.workouttrackaer
 
+import android.content.Intent
 import android.os.Bundle
 
 import android.support.design.widget.TabLayout
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         tablayout = findViewById(R.id.tabs) as TabLayout
         tablayout.setupWithViewPager(viewPager)
         viewPager.setCurrentItem(1)
+
+
+
 
     }
 
@@ -49,13 +54,11 @@ class MainActivity : AppCompatActivity() {
         return when(item.itemId){
 
             R.id.calendar_button ->{
-
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.calendarView, calenderFragment())
-                .commit()
+                val intent = Intent(this, CalendarActivity::class.java)
+                this.startActivity(intent)
 
                 true
+
             }
 
         else -> super.onOptionsItemSelected(item)

@@ -28,4 +28,12 @@ class ViewPagerAdapter:FragmentPagerAdapter {
     override fun getPageTitle(position: Int): CharSequence? {
         return mFragmentTitleList.get(position)
     }
+
+    fun replaceFragment(fragment:Fragment, title:String, position:Int)
+    {
+        mFragmentList.removeAt(position)
+        mFragmentTitleList.removeAt(position)
+        mFragmentList.add(position, fragment)
+        mFragmentTitleList.add(position, title)
+    }
 }
