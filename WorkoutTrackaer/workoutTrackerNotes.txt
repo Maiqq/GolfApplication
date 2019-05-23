@@ -1,0 +1,27 @@
+workout tracker:
+
+How to define amount of tabs to be able to swipe through? Can it be set as datetime today +- x amount of days? can it be sent to "infinity"?
+
+class structure
+		-workout class is top
+				keeps a date non nullable
+				list of exercises is nullable
+				name = date unless changed
+				volume? Can be implemented later on
+						
+						-exercise class
+							name constructor non nullable
+							list of sets nullable
+							volume? can be implemeted later on
+							pb = highest weightXrep:set
+							rpe caluclator: helper calculator
+								set class
+									amount nullable
+									once init requires reps and weight
+									rpe
+									
+		HelperCalculator class
+				functions
+					rpe calculator
+					estimated 1rep
+					
