@@ -1,8 +1,9 @@
 package android.example.workouttrackaer
 
-import android.support.v7.app.AppCompatActivity
+
 import android.os.Bundle
 import android.widget.CalendarView
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_calendar.*
 
 import java.util.*

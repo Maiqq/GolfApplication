@@ -1,20 +1,21 @@
 package android.example.workouttrackaer
 
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.content.ContextCompat.startActivity
+
+
 import android.content.Intent
 import android.R
 import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 
 
-class ViewPagerAdapter:FragmentPagerAdapter {
+class ViewPagerAdapter: FragmentPagerAdapter {
 
     private val mFragmentList:MutableList<Fragment> = mutableListOf()
     private val mFragmentTitleList:MutableList<String> = mutableListOf()
 
-    constructor(manager:FragmentManager):super(manager)
+    constructor(manager: FragmentManager):super(manager)
 
     fun addFragment(fragment:Fragment,title:String)
     {
