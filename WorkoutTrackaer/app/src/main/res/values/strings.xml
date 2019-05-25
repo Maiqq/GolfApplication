@@ -4,4 +4,7 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="calendarBtn">Show calendar</string>
     <string name="addNewExercise">Add new exercise</string>
+    <string name="exerciseName">Exercise name</string>
+    <string name="personalBest">Personal best (optional)</string>
+    <string name="empty_not_saved">Exercise not saved because it is empty</string>
 </resources>

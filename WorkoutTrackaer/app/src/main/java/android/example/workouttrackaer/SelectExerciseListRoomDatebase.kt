@@ -26,6 +26,7 @@ abstract class SelectExerciseListRoomDatebase: RoomDatabase() {
     companion object{
         @Volatile
         private var INSTANCE:SelectExerciseListRoomDatebase? = null
+         var datebaseItemCounter:Int = 0
 
 
         fun getDatabase(
@@ -72,10 +73,7 @@ abstract class SelectExerciseListRoomDatebase: RoomDatabase() {
          * Populate the database in a new coroutine.
          * If you want to start with more words, just add them.
          */
-         fun populateDatabase(selectExerciseListDao: SelectExerciseListDao) {
-            // Start the app with a clean database every time.
-            // Not needed if you only populate on creation.
-            selectExerciseListDao.deleteAll()
+        suspend fun populateDatabase(selectExerciseListDao: SelectExerciseListDao) {
 
            if(selectExerciseListDao.count().toString().toInt() == 0) {
 
@@ -91,6 +89,7 @@ abstract class SelectExerciseListRoomDatebase: RoomDatabase() {
             else
             {
             Log.d("PTM", "Database already populated")}
+            datebaseItemCounter = selectExerciseListDao.count()
 
         }
 

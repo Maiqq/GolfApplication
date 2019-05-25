@@ -19,7 +19,7 @@ interface SelectExerciseListDao {
     fun count():Int
 
     @Insert
-    fun insert(selectExerciseListItem: SelectExerciseListItem)
+    suspend fun insert(selectExerciseListItem: SelectExerciseListItem)
 
     @Query("DELETE FROM exercise_list_table")
     fun deleteAll()

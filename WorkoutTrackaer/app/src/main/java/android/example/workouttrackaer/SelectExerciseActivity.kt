@@ -1,6 +1,10 @@
 package android.example.workouttrackaer
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 
 
 import androidx.appcompat.app.AppCompatActivity
@@ -35,8 +39,34 @@ class SelectExerciseActivity: AppCompatActivity() {
             words?.let { adapter.setWords(it) }
         })
 
+        val btnAddExercise = findViewById<Button>(R.id.btn_addNewExercise)
+        btnAddExercise.setOnClickListener {
+            val intent = Intent(this@SelectExerciseActivity, NewExerciseActivity::class.java)
+            startActivityForResult(intent, newExerciseActivityRequestCode)
+
+        }
 
 
+
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intentData)
+
+        if (requestCode == newExerciseActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            intentData?.let { data ->
+                val dataString = data.getStringExtra(NewExerciseActivity.EXTRA_REPLY)
+                val count:String = dataString.substringBefore(",")
+                val name:String = dataString.substringAfter(",")
+                val exercise = SelectExerciseListItem(count.toInt(), name)
+                selectExerciseViewModel.insert(exercise)
+            }
+        } else {
+            Toast.makeText(
+                applicationContext,
+                R.string.empty_not_saved,
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 }
 

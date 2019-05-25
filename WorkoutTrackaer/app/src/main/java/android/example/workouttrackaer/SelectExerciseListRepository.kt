@@ -17,5 +17,6 @@ class SelectExerciseListRepository(private val selectExerciseListDao: SelectExer
         @WorkerThread
         suspend fun insert(selectExerciseListItem: SelectExerciseListItem) {
             selectExerciseListDao.insert(selectExerciseListItem)
+            selectExerciseListDao.count()
     }
 }

@@ -25,7 +25,7 @@ class SelectExerciseViewModel(application: Application) : AndroidViewModel(appli
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
      */
-    fun insert(selectExerciseListItem: SelectExerciseListItem) = viewModelScope.launch(Dispatchers.IO) {
+    fun insert (selectExerciseListItem: SelectExerciseListItem) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(selectExerciseListItem)
     }
 }
