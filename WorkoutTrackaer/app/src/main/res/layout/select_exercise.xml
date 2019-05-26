@@ -16,11 +16,11 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:weightSum="1">
-            <EditText
+            <SearchView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:id="@+id/searchExerciseEditText" android:hint="Exercise name"
+                    android:id="@+id/exerciseNameSearchView" android:hint="Exercise name"
                     android:layout_weight="0.7" android:layout_gravity="start"/>
             <Button
                     android:text="@string/addNewExercise"

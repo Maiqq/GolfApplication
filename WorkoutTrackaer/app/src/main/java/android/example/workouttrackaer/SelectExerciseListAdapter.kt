@@ -4,9 +4,12 @@ package android.example.workouttrackaer
 
 
 import android.content.Context
+import android.example.workouttrackaer.MainActivity.Companion.exerciseList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -14,10 +17,11 @@ import androidx.recyclerview.widget.RecyclerView
 
 class SelectExerciseListAdapter internal constructor(
     context: Context
-) : RecyclerView.Adapter<SelectExerciseListAdapter.ExerciseViewHolder>() {
+) : RecyclerView.Adapter<SelectExerciseListAdapter.ExerciseViewHolder>(), Filterable {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var exercises = emptyList<SelectExerciseListItem>() // Cached copy of words
+    private var filterableList = exercises
 
 
     inner class ExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -32,17 +36,44 @@ class SelectExerciseListAdapter internal constructor(
 
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
-        val item = exercises[position]
+        val item = filterableList[position]
         holder.exerciseItemView.text = item.name
     }
 
 
      internal fun setExercises(exercises: List<SelectExerciseListItem>) {
         this.exercises = exercises
+         this.filterableList = exercises
         notifyDataSetChanged()
     }
 
-    override fun getItemCount():Int = exercises.size
+    override fun getItemCount():Int = filterableList.size
 
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(charSequence: CharSequence): Filter.FilterResults {
+                val charString = charSequence.toString()
+                if (charString.isEmpty()) {
+                    //TODO FIX List to handle to update fully if empty
+                    filterableList = exercises
 
+                } else {
+                    val filteredList = ArrayList<SelectExerciseListItem>()
+                    for (row in exercises) {
+                        if (row.name!!.toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(row)
+                        }
+                    }
+                    filterableList = filteredList
+                }
+                val filterResults = Filter.FilterResults()
+                filterResults.values = filterableList
+                return filterResults
+            }
+            override fun publishResults(charSequence: CharSequence, filterResults: Filter.FilterResults) {
+                filterableList = filterResults.values as ArrayList<SelectExerciseListItem>
+                notifyDataSetChanged()
+            }
+        }
+    }
 }
