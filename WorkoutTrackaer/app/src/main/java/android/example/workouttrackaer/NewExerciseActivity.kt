@@ -2,8 +2,7 @@ package android.example.workouttrackaer
 
 import android.app.Activity
 import android.content.Intent
-import android.example.workouttrackaer.SelectExerciseListRoomDatebase.Companion.datebaseItemCounter
-import androidx.appcompat.app.AppCompatActivity
+import android.example.workouttrackaer.SelectExerciseListRoomDatebase.Companion.databaseItemCounter
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
@@ -34,7 +33,7 @@ class NewExerciseActivity : androidx.appcompat.app.AppCompatActivity() {
             if (TextUtils.isEmpty(exerciseNameEditText.text) && TextUtils.isEmpty(exercisePbEditText.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
-                count = datebaseItemCounter + 1
+                count = databaseItemCounter + 1
                 val name = exerciseNameEditText.text.toString()
                 val exercise: String = count.toString() + ", " + name
                 replyIntent.putExtra(EXTRA_REPLY, exercise)

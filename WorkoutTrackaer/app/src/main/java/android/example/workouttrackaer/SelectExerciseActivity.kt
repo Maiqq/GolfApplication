@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_calendar.*
 
 class SelectExerciseActivity: AppCompatActivity() {
 
@@ -34,9 +33,9 @@ class SelectExerciseActivity: AppCompatActivity() {
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
-        selectExerciseViewModel.allExercises.observe(this, Observer { words ->
+        selectExerciseViewModel.allExercises.observe(this, Observer { exercises ->
             // Update the cached copy of the words in the adapter.
-            words?.let { adapter.setWords(it) }
+            exercises?.let { adapter.setExercises(it) }
         })
 
         val btnAddExercise = findViewById<Button>(R.id.btn_addNewExercise)
@@ -59,6 +58,8 @@ class SelectExerciseActivity: AppCompatActivity() {
                 val name:String = dataString.substringAfter(",")
                 val exercise = SelectExerciseListItem(count.toInt(), name)
                 selectExerciseViewModel.insert(exercise)
+                SelectExerciseListRoomDatebase.databaseItemCounter++
+
             }
         } else {
             Toast.makeText(

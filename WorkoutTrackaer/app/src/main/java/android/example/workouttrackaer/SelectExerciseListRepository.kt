@@ -8,7 +8,7 @@ class SelectExerciseListRepository(private val selectExerciseListDao: SelectExer
 
          // Room executes all queries on a separate thread.
         // Observed LiveData will notify the observer when the data has changed.
-        val allWords: LiveData<List<SelectExerciseListItem>> = selectExerciseListDao.getAll()
+        val allExercises: LiveData<List<SelectExerciseListItem>> = selectExerciseListDao.getAll()
 
         // You must call this on a non-UI thread or your app will crash. So we're making this a
         // suspend function so the caller methods know this.
@@ -17,6 +17,6 @@ class SelectExerciseListRepository(private val selectExerciseListDao: SelectExer
         @WorkerThread
         suspend fun insert(selectExerciseListItem: SelectExerciseListItem) {
             selectExerciseListDao.insert(selectExerciseListItem)
-            selectExerciseListDao.count()
+
     }
 }

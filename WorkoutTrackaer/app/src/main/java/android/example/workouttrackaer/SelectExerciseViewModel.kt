@@ -19,7 +19,7 @@ class SelectExerciseViewModel(application: Application) : AndroidViewModel(appli
     init {
         val selectExerciseListDao = SelectExerciseListRoomDatebase.getDatabase(application, viewModelScope).selectExerciseListDao()
         repository = SelectExerciseListRepository(selectExerciseListDao)
-        allExercises = repository.allWords
+        allExercises = repository.allExercises
     }
 
     /**

@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import org.json.JSONArray
 import org.json.JSONObject
 
-@Database(entities = [SelectExerciseListItem::class], version = 3)
+@Database(entities = [SelectExerciseListItem::class], version = 4)
 abstract class SelectExerciseListRoomDatebase: RoomDatabase() {
 
     abstract fun selectExerciseListDao(): SelectExerciseListDao
@@ -26,7 +26,7 @@ abstract class SelectExerciseListRoomDatebase: RoomDatabase() {
     companion object{
         @Volatile
         private var INSTANCE:SelectExerciseListRoomDatebase? = null
-         var datebaseItemCounter:Int = 0
+         var databaseItemCounter:Int = 0
 
 
         fun getDatabase(
@@ -75,6 +75,8 @@ abstract class SelectExerciseListRoomDatebase: RoomDatabase() {
          */
         suspend fun populateDatabase(selectExerciseListDao: SelectExerciseListDao) {
 
+            selectExerciseListDao.deleteAll()
+
            if(selectExerciseListDao.count().toString().toInt() == 0) {
 
                for (x in 0 until MainActivity.exerciseList.length()) {
@@ -89,8 +91,8 @@ abstract class SelectExerciseListRoomDatebase: RoomDatabase() {
             else
             {
             Log.d("PTM", "Database already populated")}
-            datebaseItemCounter = selectExerciseListDao.count()
 
+            databaseItemCounter = selectExerciseListDao.count()
         }
 
 
