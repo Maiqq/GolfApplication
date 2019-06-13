@@ -48,6 +48,7 @@ class SelectExerciseActivity: AppCompatActivity() {
             }
         })
 
+        //Search for exercise from list
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView = findViewById<androidx.appcompat.widget.SearchView>(R.id.exerciseNameSearchView) as SearchView
         searchView!!.setSearchableInfo(searchManager

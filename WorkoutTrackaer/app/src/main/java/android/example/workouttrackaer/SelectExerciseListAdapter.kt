@@ -49,12 +49,12 @@ class SelectExerciseListAdapter internal constructor(
 
     override fun getItemCount():Int = filterableList.size
 
+    //Filter function
     override fun getFilter(): Filter {
         return object : Filter() {
-            override fun performFiltering(charSequence: CharSequence): Filter.FilterResults {
+            override fun performFiltering(charSequence: CharSequence): FilterResults {
                 val charString = charSequence.toString()
                 if (charString.isEmpty()) {
-                    //TODO FIX List to handle to update fully if empty
                     filterableList = exercises
 
                 } else {
@@ -66,11 +66,11 @@ class SelectExerciseListAdapter internal constructor(
                     }
                     filterableList = filteredList
                 }
-                val filterResults = Filter.FilterResults()
+                val filterResults = FilterResults()
                 filterResults.values = filterableList
                 return filterResults
             }
-            override fun publishResults(charSequence: CharSequence, filterResults: Filter.FilterResults) {
+            override fun publishResults(charSequence: CharSequence, filterResults: FilterResults) {
                 filterableList = filterResults.values as ArrayList<SelectExerciseListItem>
                 notifyDataSetChanged()
             }
